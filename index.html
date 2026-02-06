@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="목까시한우 - 최상급 한우의 기준이 되다. 프리미엄 한우 전문점">
+    <title>목까시한우 | 한우의 기준이 되다</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                <span class="logo-text">목까시한우</span>
+                <span class="logo-sub">한우의 기준이 되다</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#products">상품</a></li>
+                    <li><a href="#about">소개</a></li>
+                    <li><a href="#magazine">매거진</a></li>
+                    <li><a href="#gift">선물하기</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#inquiry" class="btn-inquiry">기업문의</a>
+                <button class="btn-cart" aria-label="장바구니">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="m1 1 4 4 2.5 13h13l3-10H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="btn-menu" aria-label="메뉴">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#products">상품</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#magazine">매거진</a></li>
+                <li><a href="#gift">선물하기</a></li>
+                <li><a href="#inquiry">기업문의</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- 메인 -->
+    <main>
+        <!-- 히어로 섹션 -->
+        <section class="hero">
+            <div class="hero-slider">
+                <div class="hero-slide active">
+                    <div class="hero-bg" style="background: linear-gradient(135deg, #2c1810 0%, #4a2c2a 50%, #1a0f0a 100%);"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="title-line">차이를 안다면,</span>
+                            <span class="title-line highlight">한우는 목까시</span>
+                        </h1>
+                        <p class="hero-desc">최상급 1++ 한우만을 엄선하여<br>당신의 식탁에 특별함을 선사합니다</p>
+                        <a href="#products" class="btn-primary">상품 보러가기</a>
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <div class="hero-bg" style="background: linear-gradient(135deg, #1a2c1a 0%, #2a4a2a 50%, #0f1a0f 100%);"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="title-line">설 선물은</span>
+                            <span class="title-line highlight">목까시한우</span>
+                        </h1>
+                        <p class="hero-desc">소중한 분께 전하는 마음<br>프리미엄 한우 선물세트</p>
+                        <a href="#gift" class="btn-primary">선물세트 보기</a>
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <div class="hero-bg" style="background: linear-gradient(135deg, #1a1a2c 0%, #2a2a4a 50%, #0f0f1a 100%);"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            <span class="title-line">기업 대량구매</span>
+                            <span class="title-line highlight">특별 할인</span>
+                        </h1>
+                        <p class="hero-desc">임직원 선물, 명절 선물<br>맞춤 컨시어지 서비스</p>
+                        <a href="#inquiry" class="btn-primary">기업문의하기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-pagination">
+                <button class="pagination-dot active" data-slide="0"></button>
+                <button class="pagination-dot" data-slide="1"></button>
+                <button class="pagination-dot" data-slide="2"></button>
+            </div>
+        </section>
+
+        <!-- 배너 섹션 -->
+        <section class="banner-section">
+            <div class="container">
+                <div class="banner-grid">
+                    <a href="#gift" class="banner-card">
+                        <div class="banner-icon">🎁</div>
+                        <div class="banner-text">
+                            <h3>선물 세트</h3>
+                            <p>마음을 전하는 특별한 선물</p>
+                        </div>
+                        <span class="banner-arrow">→</span>
+                    </a>
+                    <a href="#inquiry" class="banner-card">
+                        <div class="banner-icon">🏢</div>
+                        <div class="banner-text">
+                            <h3>기업 구매</h3>
+                            <p>대량 구매 전용 페이지</p>
+                        </div>
+                        <span class="banner-arrow">→</span>
+                    </a>
+                    <a href="#app" class="banner-card">
+                        <div class="banner-icon">📱</div>
+                        <div class="banner-text">
+                            <h3>앱 다운로드</h3>
+                            <p>앱 설치하고 다양한 혜택</p>
+                        </div>
+                        <span class="banner-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 상품 섹션 -->
+        <section id="products" class="products-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">인기 상품</h2>
+                    <a href="#" class="view-all">전체보기 →</a>
+                </div>
+                <div class="products-grid">
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder" style="background: linear-gradient(135deg, #8B4513, #A0522D);">
+                                <span>1++ 등심</span>
+                            </div>
+                            <span class="product-badge best">BEST</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">1++ 한우 등심 (구이용)</h3>
+                            <p class="product-desc">부드러운 식감과 풍부한 마블링</p>
+                            <div class="product-price">
+                                <span class="price-original">98,000원</span>
+                                <span class="price-sale">89,000원</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder" style="background: linear-gradient(135deg, #CD853F, #DEB887);">
+                                <span>채끝</span>
+                            </div>
+                            <span class="product-badge new">NEW</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">1++ 한우 채끝 (스테이크용)</h3>
+                            <p class="product-desc">쫄깃한 식감의 스테이크 부위</p>
+                            <div class="product-price">
+                                <span class="price-original">85,000원</span>
+                                <span class="price-sale">79,000원</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder" style="background: linear-gradient(135deg, #B8860B, #DAA520);">
+                                <span>안심</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">1++ 한우 안심 (스테이크용)</h3>
+                            <p class="product-desc">가장 부드러운 프리미엄 부위</p>
+                            <div class="product-price">
+                                <span class="price-sale">125,000원</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image">
+                            <div class="product-placeholder" style="background: linear-gradient(135deg, #8B0000, #A52A2A);">
+                                <span>갈비</span>
+                            </div>
+                            <span class="product-badge sale">10%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">1++ 한우 꽃갈비 (구이용)</h3>
+                            <p class="product-desc">풍미 가득한 갈비의 정석</p>
+                            <div class="product-price">
+                                <span class="price-original">110,000원</span>
+                                <span class="price-sale">99,000원</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 선물세트 섹션 -->
+        <section id="gift" class="gift-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">선물 세트</h2>
+                    <a href="#" class="view-all">전체보기 →</a>
+                </div>
+                <div class="gift-grid">
+                    <article class="gift-card">
+                        <div class="gift-image">
+                            <div class="gift-placeholder" style="background: linear-gradient(135deg, #2c1810, #5a3d35);">
+                                <span>프리미엄</span>
+                            </div>
+                        </div>
+                        <div class="gift-info">
+                            <span class="gift-tag">명절 선물</span>
+                            <h3 class="gift-name">프리미엄 한우 세트</h3>
+                            <p class="gift-desc">등심 + 채끝 + 안심 구성</p>
+                            <span class="gift-price">298,000원</span>
+                        </div>
+                    </article>
+                    <article class="gift-card">
+                        <div class="gift-image">
+                            <div class="gift-placeholder" style="background: linear-gradient(135deg, #1a2c1a, #3d5a3d);">
+                                <span>스페셜</span>
+                            </div>
+                        </div>
+                        <div class="gift-info">
+                            <span class="gift-tag">베스트 선물</span>
+                            <h3 class="gift-name">스페셜 등심 세트</h3>
+                            <p class="gift-desc">1++ 등심 600g x 2팩</p>
+                            <span class="gift-price">178,000원</span>
+                        </div>
+                    </article>
+                    <article class="gift-card">
+                        <div class="gift-image">
+                            <div class="gift-placeholder" style="background: linear-gradient(135deg, #2c1a2c, #5a3d5a);">
+                                <span>VIP</span>
+                            </div>
+                        </div>
+                        <div class="gift-info">
+                            <span class="gift-tag">최고급 선물</span>
+                            <h3 class="gift-name">VIP 종합 선물세트</h3>
+                            <p class="gift-desc">전 부위 최상급 구성</p>
+                            <span class="gift-price">498,000원</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 매거진 섹션 -->
+        <section id="magazine" class="magazine-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">목까시 매거진</h2>
+                    <a href="#" class="view-all">전체보기 →</a>
+                </div>
+                <div class="magazine-grid">
+                    <article class="magazine-card large">
+                        <div class="magazine-image">
+                            <div class="magazine-placeholder" style="background: linear-gradient(135deg, #4a3728, #6b5344);"></div>
+                        </div>
+                        <div class="magazine-content">
+                            <span class="magazine-category">MEAT 대백과 시리즈</span>
+                            <h3 class="magazine-title">안심의 숨겨진 매력, 아시나요?</h3>
+                            <p class="magazine-desc">부드러울 뿐 아니라 쫄깃 쫀득하죠</p>
+                        </div>
+                    </article>
+                    <article class="magazine-card">
+                        <div class="magazine-image">
+                            <div class="magazine-placeholder" style="background: linear-gradient(135deg, #3d4a3d, #5a6b5a);"></div>
+                        </div>
+                        <div class="magazine-content">
+                            <span class="magazine-category">MEATERVIEW</span>
+                            <h3 class="magazine-title">셰프가 말하는 한우의 차이</h3>
+                            <p class="magazine-desc">다채로운 변화, 한우 요리의 세계</p>
+                        </div>
+                    </article>
+                    <article class="magazine-card">
+                        <div class="magazine-image">
+                            <div class="magazine-placeholder" style="background: linear-gradient(135deg, #4a3d4a, #6b5a6b);"></div>
+                        </div>
+                        <div class="magazine-content">
+                            <span class="magazine-category">MEAT 대백과 시리즈</span>
+                            <h3 class="magazine-title">차이, 알고 드세요! 갈비 / 채끝편</h3>
+                            <p class="magazine-desc">찐 고기 러버가 좋아한다는 이 부위</p>
+                        </div>
+                    </article>
+                    <article class="magazine-card">
+                        <div class="magazine-image">
+                            <div class="magazine-placeholder" style="background: linear-gradient(135deg, #3d3d4a, #5a5a6b);"></div>
+                        </div>
+                        <div class="magazine-content">
+                            <span class="magazine-category">MEAT 대백과 시리즈</span>
+                            <h3 class="magazine-title">부위, 이렇게 다르죠 - 등심 편</h3>
+                            <p class="magazine-desc">당신은 어떤 등심을 좋아하시나요?</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 소개 섹션 -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="about-title">목까시한우가<br>특별한 이유</h2>
+                        <p class="about-desc">
+                            목까시한우는 1++ 최상급 한우만을 엄선하여<br>
+                            최상의 품질로 고객님의 식탁에 전달합니다.<br><br>
+                            철저한 품질 관리와 신선도 유지를 통해<br>
+                            진정한 한우의 맛을 경험하실 수 있습니다.
+                        </p>
+                        <ul class="about-features">
+                            <li>
+                                <span class="feature-icon">🥩</span>
+                                <span class="feature-text">1++ 최상급 한우 엄선</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">❄️</span>
+                                <span class="feature-text">신선도 유지 콜드체인 배송</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">✨</span>
+                                <span class="feature-text">철저한 품질 관리 시스템</span>
+                            </li>
+                            <li>
+                                <span class="feature-icon">🎁</span>
+                                <span class="feature-text">프리미엄 선물 포장 서비스</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <div class="about-placeholder" style="background: linear-gradient(135deg, #2c1810, #4a2c2a);"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 기업문의 섹션 -->
+        <section id="inquiry" class="inquiry-section">
+            <div class="container">
+                <div class="inquiry-content">
+                    <h2 class="inquiry-title">기업 대량 구매 문의</h2>
+                    <p class="inquiry-desc">
+                        명절 선물, 임직원 복지, 행사용 등<br>
+                        기업 맞춤 컨시어지 서비스를 제공합니다.
+                    </p>
+                    <div class="inquiry-buttons">
+                        <a href="tel:1644-0000" class="btn-primary large">전화 문의하기</a>
+                        <a href="#" class="btn-secondary large">온라인 문의</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <span class="logo-text">목까시한우</span>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>고객센터</h3>
+                        <p class="contact-number">1644-0000</p>
+                        <p class="contact-time">운영 시간 10:00 ~ 18:00</p>
+                        <p class="contact-time">재정비 시간 12:30 ~ 13:30</p>
+                        <p class="contact-note">※ 주말 및 공휴일 휴무</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>쇼핑하기</h4>
+                        <ul>
+                            <li><a href="#">전체 상품</a></li>
+                            <li><a href="#">등심</a></li>
+                            <li><a href="#">안심</a></li>
+                            <li><a href="#">채끝</a></li>
+                            <li><a href="#">갈비</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>선물하기</h4>
+                        <ul>
+                            <li><a href="#">선물세트</a></li>
+                            <li><a href="#">명절 선물</a></li>
+                            <li><a href="#">기업 구매</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>고객지원</h4>
+                        <ul>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">자주 묻는 질문</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="company-info">
+                    <p>목까시한우 (주)</p>
+                    <p>대표자 홍길동 | 개인정보 관리 책임자 김철수 | 사업자 등록번호 000-00-00000</p>
+                    <p>통신판매업 신고번호 2024-서울강남-0000 | 팩스 02-0000-0000</p>
+                    <p>서울특별시 강남구 테헤란로 123 목까시빌딩</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">이용약관</a>
+                    <span>|</span>
+                    <a href="#">개인정보처리방침</a>
+                    <span>|</span>
+                    <a href="#">제휴 문의</a>
+                    <span>|</span>
+                    <a href="#">기업 구매</a>
+                    <span>|</span>
+                    <a href="#">채용</a>
+                </div>
+                <p class="copyright">Copyright by 목까시한우 Inc. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 모바일 하단 네비게이션 -->
+    <nav class="mobile-bottom-nav">
+        <a href="/" class="nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>홈</span>
+        </a>
+        <a href="#products" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>탐색</span>
+        </a>
+        <a href="#gift" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                <rect x="2" y="7" width="20" height="5"></rect>
+                <line x1="12" y1="22" x2="12" y2="7"></line>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+            </svg>
+            <span>선물</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>마이</span>
+        </a>
+    </nav>
+
+    <script src="main.js"></script>
+</body>
+</html>
