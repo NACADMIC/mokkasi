@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 | 목까시한우</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><span class="logo-text">목까시한우</span></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#products">상품</a></li>
+                    <li><a href="index.html#about">브랜드</a></li>
+                    <li><a href="index.html#magazine">매거진</a></li>
+                    <li><a href="index.html#gift">선물하기</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="inquiry.html" class="btn-inquiry">기업문의</a>
+                <a href="cart.html" class="btn-cart active" aria-label="장바구니">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="btn-menu" aria-label="메뉴"><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html#products">상품</a></li>
+                <li><a href="index.html#about">브랜드</a></li>
+                <li><a href="index.html#magazine">매거진</a></li>
+                <li><a href="index.html#gift">선물하기</a></li>
+                <li><a href="inquiry.html">기업문의</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="cart-page">
+        <div class="container">
+            <h1 class="cart-title">장바구니</h1>
+            <div id="cart-content">
+                <p class="cart-empty">장바구니가 비어 있습니다.</p>
+                <a href="index.html#products" class="btn-primary">쇼핑 계속하기</a>
+            </div>
+            <div id="cart-items" class="cart-items" style="display:none;">
+                <ul class="cart-list" id="cart-list"></ul>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        <span>총 결제금액</span>
+                        <strong id="cart-total-price">0원</strong>
+                    </div>
+                    <button type="button" class="btn-order" id="btn-order">주문하기</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer footer-compact">
+        <div class="container">
+            <p class="contact-number">1644-0000</p>
+            <p class="copyright">© 2024 목까시한우. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        (function() {
+            function renderCart() {
+                const cart = JSON.parse(localStorage.getItem('mokkasi_cart') || '[]');
+                const contentEl = document.getElementById('cart-content');
+                const itemsEl = document.getElementById('cart-items');
+                const listEl = document.getElementById('cart-list');
+                const totalEl = document.getElementById('cart-total-price');
+
+                document.querySelectorAll('.cart-count').forEach(el => el.textContent = cart.reduce((s, i) => s + (i.quantity || 1), 0));
+
+                if (cart.length === 0) {
+                    contentEl.style.display = 'block';
+                    contentEl.innerHTML = `
+                        <p class="cart-empty">장바구니가 비어 있습니다.</p>
+                        <a href="index.html#products" class="btn-primary">쇼핑 계속하기</a>
+                    `;
+                    itemsEl.style.display = 'none';
+                    return;
+                }
+
+                contentEl.style.display = 'none';
+                itemsEl.style.display = 'block';
+
+                let total = 0;
+                listEl.innerHTML = cart.map((item, idx) => {
+                    const subtotal = item.price * (item.quantity || 1);
+                    total += subtotal;
+                    return `
+                        <li class="cart-item" data-idx="${idx}">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="cart-item-info">
+                                <h3>${item.name}</h3>
+                                <p>${item.price.toLocaleString()}원 × ${item.quantity || 1}</p>
+                            </div>
+                            <div class="cart-item-price">${subtotal.toLocaleString()}원</div>
+                            <button type="button" class="cart-item-remove" data-idx="${idx}">삭제</button>
+                        </li>
+                    `;
+                }).join('');
+
+                totalEl.textContent = total.toLocaleString() + '원';
+
+                listEl.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const idx = parseInt(btn.dataset.idx);
+                        cart.splice(idx, 1);
+                        localStorage.setItem('mokkasi_cart', JSON.stringify(cart));
+                        renderCart();
+                    });
+                });
+            }
+
+            document.getElementById('btn-order').addEventListener('click', () => {
+                alert('주문 기능은 준비 중입니다. 전화 주문: 1644-0000');
+            });
+
+            renderCart();
+        })();
+    </script>
+</body>
+</html>

@@ -1,15 +1,15 @@
 /**
- * 목까시한우 - 메인 JavaScript
+ * 목까시한우 - Premium Korean Beef
+ * Main JavaScript
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
     initHeader();
     initMobileMenu();
     initHeroSlider();
     initScrollAnimations();
     initSmoothScroll();
-    initCartCounter();
+    initCartCount();
 });
 
 /**
@@ -17,20 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function initHeader() {
     const header = document.querySelector('.header');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        // Add scrolled class
-        if (currentScroll > 50) {
+    
+    const handleScroll = () => {
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
+    };
 
-        lastScroll = currentScroll;
-    });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 }
 
 /**
@@ -49,7 +46,6 @@ function initMobileMenu() {
         document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Close menu on link click
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             menuBtn.classList.remove('active');
@@ -60,17 +56,21 @@ function initMobileMenu() {
 }
 
 /**
- * Hero slider
+ * Hero slider with Ken Burns effect
  */
 function initHeroSlider() {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.pagination-dot');
     let currentSlide = 0;
     let autoSlideInterval;
+    let isTransitioning = false;
 
     if (slides.length === 0) return;
 
     function goToSlide(index) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
         slides[currentSlide].classList.remove('active');
         dots[currentSlide].classList.remove('active');
         
@@ -80,6 +80,10 @@ function initHeroSlider() {
         
         slides[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
+
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 1000);
     }
 
     function nextSlide() {
@@ -87,7 +91,7 @@ function initHeroSlider() {
     }
 
     function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 5000);
+        autoSlideInterval = setInterval(nextSlide, 6000);
     }
 
     function stopAutoSlide() {
@@ -97,13 +101,14 @@ function initHeroSlider() {
     // Dot click handlers
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
+            if (index === currentSlide) return;
             stopAutoSlide();
             goToSlide(index);
             startAutoSlide();
         });
     });
 
-    // Touch/swipe support
+    // Touch swipe support
     let touchStartX = 0;
     let touchEndX = 0;
     const heroElement = document.querySelector('.hero');
@@ -126,7 +131,7 @@ function initHeroSlider() {
         if (Math.abs(diff) > swipeThreshold) {
             stopAutoSlide();
             if (diff > 0) {
-                nextSlide();
+                goToSlide(currentSlide + 1);
             } else {
                 goToSlide(currentSlide - 1);
             }
@@ -134,35 +139,47 @@ function initHeroSlider() {
         }
     }
 
-    // Start auto slide
+    // Start
     startAutoSlide();
 
     // Pause on hover (desktop)
     const heroSlider = document.querySelector('.hero-slider');
-    if (heroSlider) {
+    if (heroSlider && window.matchMedia('(hover: hover)').matches) {
         heroSlider.addEventListener('mouseenter', stopAutoSlide);
         heroSlider.addEventListener('mouseleave', startAutoSlide);
     }
+
+    // Visibility API - pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopAutoSlide();
+        } else {
+            startAutoSlide();
+        }
+    });
 }
 
 /**
- * Scroll animations
+ * Scroll animations using Intersection Observer
  */
 function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.product-card, .gift-card, .magazine-card, .banner-card');
+    const animatedElements = document.querySelectorAll(
+        '.product-card, .gift-card, .magazine-card, .feature-item'
+    );
     
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -60px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
+                const delay = entry.target.dataset.delay || 0;
                 setTimeout(() => {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
+                }, delay);
                 observer.unobserve(entry.target);
             }
         });
@@ -170,8 +187,9 @@ function initScrollAnimations() {
 
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        el.dataset.delay = (index % 4) * 100;
         observer.observe(el);
     });
 }
@@ -203,41 +221,28 @@ function initSmoothScroll() {
 }
 
 /**
- * Cart counter (demo)
+ * Cart count from localStorage
  */
-function initCartCounter() {
-    const cartBtn = document.querySelector('.btn-cart');
-    const cartCount = document.querySelector('.cart-count');
-    
-    if (!cartBtn || !cartCount) return;
-
-    // Demo: Add random items on click (for demo purposes)
-    cartBtn.addEventListener('click', () => {
-        const currentCount = parseInt(cartCount.textContent) || 0;
-        cartCount.textContent = currentCount + 1;
-        
-        // Animate
-        cartBtn.style.transform = 'scale(1.1)';
-        setTimeout(() => {
-            cartBtn.style.transform = 'scale(1)';
-        }, 150);
-    });
+function initCartCount() {
+    const cart = JSON.parse(localStorage.getItem('mokkasi_cart') || '[]');
+    const count = cart.reduce((s, i) => s + (i.quantity || 1), 0);
+    document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
 }
 
 /**
  * Mobile bottom nav active state
  */
-function updateMobileNavActive() {
+(function() {
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
     
+    if (navItems.length === 0) return;
+
     window.addEventListener('scroll', () => {
         let current = '';
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
             if (window.pageYOffset >= sectionTop - 200) {
                 current = section.getAttribute('id');
             }
@@ -246,57 +251,9 @@ function updateMobileNavActive() {
         navItems.forEach(item => {
             item.classList.remove('active');
             const href = item.getAttribute('href');
-            if (href === '#' + current || (href === '/' && !current)) {
+            if (href === '#' + current || ((href === '/' || href === 'index.html') && !current)) {
                 item.classList.add('active');
             }
         });
-    });
-}
-
-// Initialize mobile nav tracking
-updateMobileNavActive();
-
-/**
- * Product card hover effects (touch devices)
- */
-function initTouchHover() {
-    const cards = document.querySelectorAll('.product-card, .gift-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('touchstart', function() {
-            this.classList.add('touch-hover');
-        }, { passive: true });
-        
-        card.addEventListener('touchend', function() {
-            setTimeout(() => {
-                this.classList.remove('touch-hover');
-            }, 300);
-        }, { passive: true });
-    });
-}
-
-initTouchHover();
-
-/**
- * Lazy loading images (if needed later)
- */
-function initLazyLoad() {
-    if ('IntersectionObserver' in window) {
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
-}
-
-console.log('목까시한우 웹사이트가 로드되었습니다.');
+    }, { passive: true });
+})();

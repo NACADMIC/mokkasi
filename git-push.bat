@@ -27,6 +27,7 @@ echo 예: https://github.com/username/mokkasi-hanwoo.git
 echo ----------------------------------------
 set /p REPO_URL="GitHub URL: "
 
+git remote remove origin 2>nul
 git remote add origin %REPO_URL%
 git branch -M main
 git push -u origin main
