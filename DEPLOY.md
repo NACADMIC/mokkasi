@@ -1,19 +1,19 @@
-# 목까시한우 - 서버 배포 가이드
+# MOK'S BUTCHER - 서버 배포 가이드
 
 ## 방법 1: GitHub Pages (무료)
 
 ### 1단계: GitHub 저장소 생성
 1. https://github.com/new 에서 새 저장소 생성
-2. 저장소 이름: `mokkasi-hanwoo` (또는 원하는 이름)
+2. 저장소 이름: `moks-butcher` (또는 원하는 이름)
 
 ### 2단계: 코드 푸시
 ```bash
 cd "c:\Users\j\목까시부쳐"
 git init
 git add .
-git commit -m "목까시한우 웹사이트"
+git commit -m "MOK'S BUTCHER 웹사이트"
 git branch -M main
-git remote add origin https://github.com/본인아이디/mokkasi-hanwoo.git
+git remote add origin https://github.com/본인아이디/moks-butcher.git
 git push -u origin main
 ```
 
@@ -21,7 +21,7 @@ git push -u origin main
 1. GitHub 저장소 → **Settings** → **Pages**
 2. Source: **Deploy from a branch**
 3. Branch: **main** / **/ (root)** 선택
-4. Save → 몇 분 후 `https://본인아이디.github.io/mokkasi-hanwoo/` 에서 확인
+4. Save → 몇 분 후 `https://본인아이디.github.io/moks-butcher/` 에서 확인
 
 ---
 

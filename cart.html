@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>장바구니 | 목까시한우</title>
+    <title>장바구니 | MOK'S BUTCHER</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body>
     <header class="header scrolled">
         <div class="header-inner">
-            <a href="index.html" class="logo"><span class="logo-text">목까시한우</span></a>
+            <a href="index.html" class="logo"><span class="logo-text">MOK'S BUTCHER</span></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html#products">상품</a></li>
@@ -67,11 +67,12 @@
     <footer class="footer footer-compact">
         <div class="container">
             <p class="contact-number">1644-0000</p>
-            <p class="copyright">© 2024 목까시한우. All rights reserved.</p>
+            <p class="copyright">© 2026 MOK'S BUTCHER. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="main.js"></script>
+    <script src="chat-widget.js"></script>
     <script>
         (function() {
             function renderCart() {
@@ -126,7 +127,7 @@
             }
 
             document.getElementById('btn-order').addEventListener('click', () => {
-                alert('주문 기능은 준비 중입니다. 전화 주문: 1644-0000');
+                location.href = 'checkout.html';
             });
 
             renderCart();

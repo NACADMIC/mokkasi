@@ -1,5 +1,5 @@
 /**
- * 목까시한우 - 상품/선물/매거진 데이터
+ * MOK'S BUTCHER - 상품/선물/매거진 데이터
  */
 const MOKKASI_DATA = {
   products: [

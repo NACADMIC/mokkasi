@@ -1,7 +1,7 @@
 {
-  "name": "mokkasi-hanwoo",
+  "name": "moks-butcher",
   "version": "1.0.0",
-  "description": "목까시한우 - 프리미엄 정육점 웹사이트",
+  "description": "MOK'S BUTCHER - 프리미엄 정육점 웹사이트",
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
@@ -11,7 +11,7 @@
     "한우",
     "정육점",
     "프리미엄",
-    "목까시한우"
+    "MOK'S BUTCHER"
   ],
   "author": "",
   "license": "MIT"

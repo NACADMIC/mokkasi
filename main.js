@@ -1,5 +1,5 @@
 /**
- * 목까시한우 - Premium Korean Beef
+ * MOK'S BUTCHER - Premium Korean Beef
  * Main JavaScript
  */
 

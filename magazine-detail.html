@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>매거진 | 목까시한우</title>
+    <title>매거진 | MOK'S BUTCHER</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 <body>
     <header class="header scrolled">
         <div class="header-inner">
-            <a href="index.html" class="logo"><span class="logo-text">목까시한우</span></a>
+            <a href="index.html" class="logo"><span class="logo-text">MOK'S BUTCHER</span></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html#products">상품</a></li>
@@ -53,20 +53,26 @@
     <footer class="footer footer-compact">
         <div class="container">
             <p class="contact-number">1644-0000</p>
-            <p class="copyright">© 2024 목까시한우. All rights reserved.</p>
+            <p class="copyright">© 2026 MOK'S BUTCHER. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="data.js"></script>
     <script>
         (function() {
+            if (typeof MOKKASI_DATA === 'undefined') {
+                window.MOKKASI_DATA = { magazines: [{id:1,title:'안심의 숨겨진 매력',desc:'부드럽고 쫄깃한 식감',category:'MEAT GUIDE',image:'https://images.unsplash.com/photo-1613454320437-0c228c8b1723?auto=format&fit=crop&w=1200&q=80',content:'안심은 한우에서 가장 부드러운 부위입니다.'},{id:2,title:'셰프가 말하는 한우의 차이',desc:'한우 요리의 세계',category:'INTERVIEW',image:'https://images.unsplash.com/photo-1666013942642-b7b54ecafd7d?auto=format&fit=crop&w=1200&q=80',content:'프로 셰프의 시선으로 한우를 들여다봅니다.'},{id:3,title:'갈비 vs 채끝',desc:'당신의 선택은?',category:'MEAT GUIDE',image:'https://images.unsplash.com/photo-1448907503123-67254d59ca4f?auto=format&fit=crop&w=1200&q=80',content:'갈비와 채끝의 차이를 가이드합니다.'},{id:4,title:'등심의 모든 것',desc:'부위별 가이드',category:'MEAT GUIDE',image:'https://images.unsplash.com/photo-1690983321239-775be3a0347d?auto=format&fit=crop&w=1200&q=80',content:'등심 부위별 가이드입니다.'}] };
+            }
             const params = new URLSearchParams(location.search);
             const id = parseInt(params.get('id')) || 1;
             const article = MOKKASI_DATA.magazines.find(m => m.id === id) || MOKKASI_DATA.magazines[0];
 
             const container = document.getElementById('magazine-detail-container');
             container.innerHTML = `
+                <div class="detail-top-row">
                 <a href="index.html#magazine" class="detail-back">← 매거진 목록</a>
+                <button type="button" class="btn-share-link" title="링크 복사">링크 공유</button>
+            </div>
                 <article class="magazine-article">
                     <div class="magazine-article-image">
                         <img src="${article.image}" alt="${article.title}">
@@ -80,8 +86,16 @@
                 </article>
             `;
 
-            document.title = `${article.title} | 목까시한우`;
+            document.title = `${article.title} | MOK'S BUTCHER`;
             updateCartCount();
+
+            container.querySelector('.btn-share-link')?.addEventListener('click', function() {
+                const url = location.href;
+                navigator.clipboard?.writeText(url).then(() => {
+                    this.textContent = '복사됨!';
+                    setTimeout(() => { this.textContent = '링크 공유'; }, 1500);
+                }).catch(() => alert('링크: ' + url));
+            });
         })();
 
         function updateCartCount() {
@@ -91,5 +105,6 @@
         }
     </script>
     <script src="main.js"></script>
+    <script src="chat-widget.js"></script>
 </body>
 </html>

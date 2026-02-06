@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>주문/결제 | MOK'S BUTCHER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><span class="logo-text">MOK'S BUTCHER</span></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#products">상품</a></li>
+                    <li><a href="index.html#about">브랜드</a></li>
+                    <li><a href="index.html#magazine">매거진</a></li>
+                    <li><a href="index.html#gift">선물하기</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="inquiry.html" class="btn-inquiry">기업문의</a>
+                <a href="cart.html" class="btn-cart" aria-label="장바구니">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="btn-menu" aria-label="메뉴"><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html#products">상품</a></li>
+                <li><a href="index.html#about">브랜드</a></li>
+                <li><a href="index.html#magazine">매거진</a></li>
+                <li><a href="index.html#gift">선물하기</a></li>
+                <li><a href="inquiry.html">기업문의</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="checkout-page">
+        <div class="container">
+            <a href="cart.html" class="detail-back">← 장바구니로</a>
+            <h1 class="checkout-title">주문/결제</h1>
+
+            <div id="checkout-empty" class="checkout-empty" style="display:none;">
+                <p>장바구니가 비어 있습니다.</p>
+                <a href="index.html#products" class="btn-primary">쇼핑하러 가기</a>
+            </div>
+
+            <form id="checkout-form" class="checkout-form">
+                <!-- 주문 상품 -->
+                <section class="checkout-section">
+                    <h2 class="checkout-section-title">주문 상품</h2>
+                    <ul class="checkout-order-list" id="checkout-order-list"></ul>
+                    <div class="checkout-order-total">
+                        <span>상품 금액</span>
+                        <strong id="order-subtotal">0원</strong>
+                    </div>
+                    <div class="checkout-order-total">
+                        <span>배송비</span>
+                        <strong id="order-shipping">3,000원</strong>
+                    </div>
+                    <div class="checkout-order-total checkout-final">
+                        <span>총 결제금액</span>
+                        <strong id="order-total">0원</strong>
+                    </div>
+                </section>
+
+                <!-- 배송 정보 -->
+                <section class="checkout-section">
+                    <h2 class="checkout-section-title">배송 정보</h2>
+                    <div class="form-group">
+                        <label for="recipient">수령인 *</label>
+                        <input type="text" id="recipient" name="recipient" required placeholder="이름을 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">연락처 *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="zipcode">우편번호 *</label>
+                        <div class="zipcode-row">
+                            <input type="text" id="zipcode" name="zipcode" required placeholder="우편번호" readonly>
+                            <button type="button" class="btn-zipcode" id="btn-zipcode">주소 검색</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">주소 *</label>
+                        <input type="text" id="address" name="address" required placeholder="주소를 검색해주세요" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressDetail">상세주소 *</label>
+                        <input type="text" id="addressDetail" name="addressDetail" required placeholder="상세주소를 입력하세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="memo">배송 메모</label>
+                        <input type="text" id="memo" name="memo" placeholder="배송 시 요청사항 (선택)">
+                    </div>
+                </section>
+
+                <!-- 결제 수단 -->
+                <section class="checkout-section">
+                    <h2 class="checkout-section-title">결제 수단</h2>
+                    <div class="payment-methods">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card" checked>
+                            <span>신용/체크카드</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="transfer">
+                            <span>계좌이체</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="deposit">
+                            <span>무통장입금</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- 동의 -->
+                <section class="checkout-section">
+                    <label class="checkout-agree">
+                        <input type="checkbox" id="agree" name="agree" required>
+                        <span>주문 내용을 확인했으며, 결제에 동의합니다.</span>
+                    </label>
+                </section>
+
+                <button type="submit" class="btn-checkout-submit" id="btn-submit">결제하기</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer footer-compact">
+        <div class="container">
+            <p class="contact-number">1644-0000</p>
+            <p class="copyright">© 2026 MOK'S BUTCHER. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/pro/postcode.v2.js"></script>
+    <script src="main.js"></script>
+    <script src="chat-widget.js"></script>
+    <script>
+        (function() {
+            const cart = JSON.parse(localStorage.getItem('mokkasi_cart') || '[]');
+            const emptyEl = document.getElementById('checkout-empty');
+            const formEl = document.getElementById('checkout-form');
+
+            document.querySelectorAll('.cart-count').forEach(el => el.textContent = cart.reduce((s, i) => s + (i.quantity || 1), 0));
+
+            if (cart.length === 0) {
+                emptyEl.style.display = 'block';
+                formEl.style.display = 'none';
+            } else {
+                let subtotal = 0;
+                const listEl = document.getElementById('checkout-order-list');
+                listEl.innerHTML = cart.map(item => {
+                    const qty = item.quantity || 1;
+                    const price = item.price * qty;
+                    subtotal += price;
+                    return `
+                        <li class="checkout-order-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div>
+                                <strong>${item.name}</strong>
+                                <p>${item.price.toLocaleString()}원 × ${qty}</p>
+                            </div>
+                            <strong>${price.toLocaleString()}원</strong>
+                        </li>
+                    `;
+                }).join('');
+
+                const shipping = 3000;
+                const total = subtotal + shipping;
+
+                document.getElementById('order-subtotal').textContent = subtotal.toLocaleString() + '원';
+                document.getElementById('order-shipping').textContent = shipping.toLocaleString() + '원';
+                document.getElementById('order-total').textContent = total.toLocaleString() + '원';
+            }
+
+            // 주소 검색 (다음 우편번호 API)
+            document.getElementById('btn-zipcode')?.addEventListener('click', function() {
+                if (typeof daum === 'undefined') {
+                    alert('주소 검색을 사용하려면 인터넷 연결을 확인해주세요.');
+                    document.getElementById('address').removeAttribute('readonly');
+                    document.getElementById('zipcode').removeAttribute('readonly');
+                    return;
+                }
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        document.getElementById('zipcode').value = data.zonecode;
+                        document.getElementById('address').value = data.roadAddress || data.jibunAddress;
+                        document.getElementById('addressDetail').focus();
+                    }
+                }).open();
+            });
+
+            document.getElementById('checkout-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const order = {
+                    recipient: formData.get('recipient'),
+                    phone: formData.get('phone'),
+                    zipcode: formData.get('zipcode'),
+                    address: formData.get('address'),
+                    addressDetail: formData.get('addressDetail'),
+                    memo: formData.get('memo'),
+                    payment: formData.get('payment'),
+                    items: JSON.parse(localStorage.getItem('mokkasi_cart') || '[]'),
+                    total: document.getElementById('order-total')?.textContent || '0원'
+                };
+                localStorage.removeItem('mokkasi_cart');
+                localStorage.setItem('mokkasi_last_order', JSON.stringify(order));
+                location.href = 'order-complete.html';
+            });
+        })();
+    </script>
+</body>
+</html>
